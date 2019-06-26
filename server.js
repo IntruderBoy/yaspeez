@@ -3,10 +3,10 @@ const app = express()
 const bodyParser = require("body-parser")
 const cors = require('cors')
 const path = require('path');
-var mongoose = require("mongoose")
+const mongoose = require("mongoose")
 
 //step 1
-var port = process.env.PORT || 5000
+const port = process.env.PORT || 5000
 
 
 
@@ -22,13 +22,13 @@ app.use(
     })
 )
 
-app.use('/users', Users)
+app.use('/models/users', Users)
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/collection', { useNewUrlParser: true })
     .then(() => console.log("Connected With MongoDB...!"))
     .catch(err => console.log(err))
 
-var Users = require('./routes/Users')
+const Users = require('./routes/Users')
 
 
 
@@ -65,11 +65,11 @@ connection.once('open', function () {
 
 let Chart = require('./chartModel');
 
-const chartRoutes = express.Router();
+const routes = express.Router();
 
 
 
-chartRoutes.route('/').get(function (req, res) {
+routes.route('/').get(function (req, res) {
     Chart.find(function (err, charts) {
         if (err) {
         }
@@ -79,14 +79,14 @@ chartRoutes.route('/').get(function (req, res) {
     });
 });
 
-chartRoutes.route('/:id').get(function (req, res) {
+routes.route('/:id').get(function (req, res) {
     let id = req.params.id;
     Chart.findById(id, function (err, chart) {
         res.json(chart);
     });
 });
 
-chartRoutes.route('/add').post(function (req, res) {
+routes.route('/add').post(function (req, res) {
     let chart = new Chart(req.body);
     chart.save()
         .then(chart => {
@@ -97,7 +97,7 @@ chartRoutes.route('/add').post(function (req, res) {
         });
 });
 
-chartRoutes.route('/delete/:id').post(function (req, res) {
+routes.route('/delete/:id').post(function (req, res) {
     Chart.findById(req.params.id, function (err, chart) {
         chart.remove({ _id: req.body.id }, function (err) {
             if (err) {
