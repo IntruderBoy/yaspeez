@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { register } from './UserFunctions'
-import { Card } from 'reactstrap';
 
 
 class Register extends Component {
@@ -38,7 +37,6 @@ class Register extends Component {
     render() {
         return (
             <div className="container">
-                <Card className="m-2" style={{ height: 600 }}>
                     <div className="row">
                         <div className="col-md-6 mt-5 mx-auto">
                             <form noValidate onSubmit={this.onSubmit}>
@@ -85,7 +83,6 @@ class Register extends Component {
                             </form>
                         </div>
                     </div>
-                </Card>
             </div>
         )
     }
