@@ -22,7 +22,7 @@ app.use(
     })
 )
 
-app.use('/models/users', Users)
+app.use('/users', Users)
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/collection', { useNewUrlParser: true })
     .then(() => console.log("Connected With MongoDB...!"))
