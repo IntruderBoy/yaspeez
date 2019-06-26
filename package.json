@@ -4,17 +4,14 @@
   "description": "",
   "main": "server.js",
   "scripts": {   
-    "server": "nodemon server.js",
-    "collection": "npm start --prefix collection",
-    "dev": "concurrently \" npm run server \" \"npm run collection \" ",
+    "start": "nodemon server.js",
     "heroku-postbuild": "cd collection && npm install && npm run build"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "3.0.0",
-    "body-parser": "^1.17.2",
-    "concurrently": "^4.1.0",
+    "body-parser": "^1.17.2",   
     "cors": "^2.8.4",
     "express": "^4.16.3",
     "jsonwebtoken": "^7.4.2",
