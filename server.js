@@ -22,7 +22,7 @@ app.use(
 )
 
 
-const mongoURI = process.env.MONGO_URI || 'mongodb://localhost:27017/collection'
+const mongoURI = process.env.MONGO_URI || 'mongodb://localhost/collection'
 
 mongoose.connect(mongoURI, { useNewUrlParser: true })
     .then(() => console.log("Connected With MongoDB...!"))
@@ -54,15 +54,7 @@ app.listen(port, () => {
 
 
 
-
-
-
-
-
-
-
-
-mongoose.connect('mongodb://127.0.0.1:27017/chartdb', { useNewUrlParser: true });
+mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost/chartdb', { useNewUrlParser: true });
 const connection = mongoose.connection;
 
 connection.once('open', function () {
